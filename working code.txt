@@ -1,0 +1,34 @@
+
+const nodemailer = require("nodemailer");
+const handleRegister = async (req, res, next) => {
+
+  const {email}= req.body
+  let transporter =await nodemailer.createTransport({
+    service:"gmail",
+    host: "smtp.ethereal.email",
+    port: 587,
+    secure: false, // true for 465, false for other ports
+    auth: {
+      user: "aliofficial3594@gmail.com" ,// generated ethereal user
+      pass:  "rbhparrafxrbacyl",// generated app password from gmail 
+    },
+  });
+  let SRMails = await transporter.sendMail({
+    from: 'aliofficial3594@gmail.com', // sender address
+    to: email, // list of receivers(mail coming from user )
+    subject: "Verification email for Sign Up", // Subject line
+    text: "4321", // plain text body(verification code which will be sent to user)
+  });
+  
+  transporter.sendMail(SRMails,(error,info)=>{
+    if(error) {
+    console.log(error,"mail not send")
+    }
+    else{
+      console.log("mail sent successfully");
+    }
+  })
+
+  next();
+};
+module.exports = handleRegister;
