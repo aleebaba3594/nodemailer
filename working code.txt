@@ -9,12 +9,12 @@ const handleRegister = async (req, res, next) => {
     port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
-      user: "aliofficial3594@gmail.com" ,// generated ethereal user
-      pass:  "rbhparrafxrbacyl",// generated app password from gmail 
+      user: "abc@gmail.com" ,// generated ethereal user
+      pass:  "yuiparrafxqweqyl",// generated app password from gmail 
     },
   });
   let SRMails = await transporter.sendMail({
-    from: 'aliofficial3594@gmail.com', // sender address
+    from: 'abc@gmail.com', // sender address
     to: email, // list of receivers(mail coming from user )
     subject: "Verification email for Sign Up", // Subject line
     text: "4321", // plain text body(verification code which will be sent to user)
